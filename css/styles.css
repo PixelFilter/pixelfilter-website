@@ -252,10 +252,11 @@ html, body {
 }
 .footer-icon svg {
   width: 28px;
+  margin-top: -2px;
   height: 28px;
   color: #aaa;
   vertical-align: middle;
-  margin-bottom: -8px;
+  margin-bottom: 20px;
   display: inline-block;
   overflow: visible;
   transition: color 0.2s;
