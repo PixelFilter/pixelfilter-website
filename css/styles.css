@@ -538,3 +538,20 @@ html, body {
     min-height: 160px;
   }
 }
+/* Futuristic animated background for about page */
+#futuristic-bg {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 0;
+  pointer-events: none;
+  background: transparent;
+}
+body, html {
+  overflow-x: hidden;
+}
+.container, .pf-header, main, footer, .about-section {
+  position: relative;
+  z-index: 1;
+}
