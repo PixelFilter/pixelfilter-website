@@ -7,43 +7,45 @@
   <link rel="stylesheet" href="css/components/header.css">
 </head>
 <body>
-<header class="pf-header">
-  <div class="pf-header__logo">
-    <a href="/"><img src="assets/images/PixelFilter_Logo.webp" alt="PixelFilter Logo" height="40"></a>
-  </div>
-  <nav class="pf-header__nav">
-    <a href="videos.html" class="active">Videos</a>
-    <a href="mixes.html">Mixes</a>
-    <a href="photos.html">Photos</a>
-    <a href="shows.html">Shows</a>
-    <a href="about.html">About</a>
-    <a href="contact.html">Contact</a>
-  </nav>
-</header>
-  <main>
-    <div id="videos-grid" class="videos-grid"></div>
-    <script>
-      fetch('data/videos.json')
-        .then(res => res.json())
-        .then(videos => {
-          const grid = document.getElementById('videos-grid');
-          grid.innerHTML = videos.map(video => {
-            // Extract YouTube ID from URL
-            const match = video.VideoURL.match(/v=([a-zA-Z0-9_-]+)/);
-            const id = match ? match[1] : '';
-            const thumb = id ? `https://img.youtube.com/vi/${id}/hqdefault.jpg` : '';
-            return `
-              <div class="video-item" onclick="window.open('${video.VideoURL}', '_blank')">
-                <img src="${thumb}" alt="Thumbnail for ${video.Title}" class="video-thumb"/>
-                <div class="video-info">
-                  <h2 class="video-title">${video.Title}</h2>
-                  <p class="video-desc">${video.Description}</p>
+  <div class="container">
+    <header class="pf-header">
+      <div class="pf-header__logo">
+        <a href="/"><img src="assets/images/PixelFilter_Logo.webp" alt="PixelFilter Logo" height="40"></a>
+      </div>
+      <nav class="pf-header__nav">
+        <a href="videos.html" class="active">Videos</a>
+        <a href="mixes.html">Mixes</a>
+        <a href="photos.html">Photos</a>
+        <a href="shows.html">Shows</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </header>
+    <main>
+      <div id="videos-grid" class="videos-grid"></div>
+      <script>
+        fetch('data/videos.json')
+          .then(res => res.json())
+          .then(videos => {
+            const grid = document.getElementById('videos-grid');
+            grid.innerHTML = videos.map(video => {
+              // Extract YouTube ID from URL
+              const match = video.VideoURL.match(/v=([a-zA-Z0-9_-]+)/);
+              const id = match ? match[1] : '';
+              const thumb = id ? `https://img.youtube.com/vi/${id}/hqdefault.jpg` : '';
+              return `
+                <div class="video-item" onclick="window.open('${video.VideoURL}', '_blank')">
+                  <img src="${thumb}" alt="Thumbnail for ${video.Title}" class="video-thumb"/>
+                  <div class="video-info">
+                    <h2 class="video-title">${video.Title}</h2>
+                    <p class="video-desc">${video.Description}</p>
+                  </div>
                 </div>
-              </div>
-            `;
-          }).join('');
-        });
-    </script>
-  </main>
+              `;
+            }).join('');
+          });
+      </script>
+    </main>
+  </div>
 </body>
 </html>
