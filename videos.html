@@ -27,13 +27,14 @@
   <div id="video-bg-section">
     <iframe
       class="video-bg-iframe"
-      src="https://www.youtube.com/embed/wip3zTqO5p8?autoplay=1&mute=1&controls=0&showinfo=0&rel=0&loop=1&playlist=wip3zTqO5p8&modestbranding=1&fs=0&disablekb=1&iv_load_policy=3"
+      src="https://www.youtube.com/embed/bO_1bl7s9TQ?autoplay=1&mute=1&controls=0&showinfo=0&rel=0&loop=1&playlist=bO_1bl7s9TQ&modestbranding=1&fs=0&disablekb=1&iv_load_policy=3&start=970"
       title="YouTube video background"
       frameborder="0"
       allow="autoplay; encrypted-media"
       allowfullscreen
       style="pointer-events:none;">
     </iframe>
+    <div class="video-bg-overlay"></div>
   </div>
   <div class="container">
     <main>
@@ -284,6 +285,7 @@
   overflow: hidden;
   position: relative;
   background: #000;
+  margin-bottom: 48px;
 }
 #video-bg-section .video-bg-iframe {
   position: absolute;
@@ -298,6 +300,15 @@
   pointer-events: none;
   display: block;
   background: #000;
+  z-index: 1;
+}
+#video-bg-section .video-bg-overlay {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0,0,0,0.3);
+  z-index: 2;
+  pointer-events: none;
 }
 @media (max-width: 600px) {
   #video-bg-section {
