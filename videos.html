@@ -22,9 +22,24 @@
       </nav>
     </header>
     <main>
-      <div id="videos-grid" class="videos-grid"></div>
-      <script>
-        fetch('data/videos.json')
+    </div>
+    <div class="video-header-embed">
+      <iframe
+        width="100%"
+        height="400"
+        src="https://www.youtube.com/embed/wip3zTqO5p8?autoplay=1&mute=1&controls=0&showinfo=0&rel=0&loop=1&playlist=wip3zTqO5p8&modestbranding=1&fs=0&disablekb=1&iv_load_policy=3&rel=0&start=600&mute=1"
+        title="YouTube video player"
+        frameborder="0"
+        allow="autoplay; encrypted-media"
+        allowfullscreen
+        style="display:block; width:100%; height:700px; object-fit:cover; pointer-events:none;">
+      </iframe>
+    </div>
+    <div class="container">
+      <main>
+        <div id="videos-grid" class="videos-grid"></div>
+        <script>
+          fetch('data/videos.json')
           .then(res => res.json())
           .then(videos => {
             const grid = document.getElementById('videos-grid');
@@ -44,8 +59,71 @@
               `;
             }).join('');
           });
+        </script>
+      </main>
+    </div>
+      <script>
+        fetch('data/videos.json')
+        .then(res => res.json())
+        .then(videos => {
+          const grid = document.getElementById('videos-grid');
+          grid.innerHTML = videos.map(video => {
+            // Extract YouTube ID from URL
+            const match = video.VideoURL.match(/v=([a-zA-Z0-9_-]+)/);
+            const id = match ? match[1] : '';
+            const thumb = id ? `https://img.youtube.com/vi/${id}/hqdefault.jpg` : '';
+            return `
+              <div class="video-item" onclick="window.open('${video.VideoURL}', '_blank')">
+                <img src="${thumb}" alt="Thumbnail for ${video.Title}" class="video-thumb"/>
+                <div class="video-info">
+                  <h2 class="video-title">${video.Title}</h2>
+                  <p class="video-desc">${video.Description}</p>
+                </div>
+              </div>
+            `;
+          }).join('');
+        });
       </script>
     </main>
   </div>
 </body>
+<style>
+.video-header-embed {
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  background: #000;
+  margin-bottom: 32px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  height: 700px;
+  z-index: 100;
+}
+.video-header-embed iframe {
+  width: 120vw;
+  min-width: 100vw;
+  max-width: none;
+  height: 900px;
+  border: none;
+  object-fit: cover;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+}
+@media (max-width: 600px) {
+  .video-header-embed {
+    height: 340px;
+  }
+  .video-header-embed iframe {
+    height: 340px;
+    top: 0;
+  }
+}
+</style>
 </html>
