@@ -298,3 +298,14 @@ html, body {
   font-size: 1em;
   margin-top: 12px;
 }
+.show-date-overlay.past-show::before {
+  content: "";
+  position: absolute;
+  top: 50%; left: 0;
+  width: 100%;
+  height: 1px;
+  background: #000;
+  transform: rotate(-45deg) translateY(-50%);
+  z-index: 3;
+  pointer-events: none;
+}

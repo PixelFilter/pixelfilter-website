@@ -15,28 +15,36 @@ document.addEventListener('DOMContentLoaded', async () => {
 
   main.innerHTML = `
     <div class="shows-list">
-      ${shows.map(show => `
-        <div class="show-item">
-          <div class="show-poster-wrap">
-            <img class="show-poster" src="${show.PosterURL}" alt="${show.Title}">
-            <div class="show-date-overlay">${formatDate(show.Date)}</div>
+      ${shows.map(show => {
+        const showDate = new Date(show.Date);
+        const now = new Date();
+        // Remove time portion for comparison
+        showDate.setHours(0,0,0,0);
+        now.setHours(0,0,0,0);
+        const isPast = showDate < now;
+        return `
+          <div class="show-item">
+            <div class="show-poster-wrap">
+              <img class="show-poster" src="${show.PosterURL}" alt="${show.Title}">
+              <div class="show-date-overlay${isPast ? ' past-show' : ''}">${formatDate(show.Date)}</div>
+            </div>
+            <div class="show-content">
+              <h2 class="show-title">${show.Title}</h2>
+              <div class="show-location"><em>${show.Location}</em></div>
+              <div class="show-desc">${show.Description}</div>
+              ${Array.isArray(show["Stage Name"]) ? show["Stage Name"].map(stage =>
+                `<div class="show-stage">
+                  ${stage.name ? `<div class="show-stage-name">${stage.name}</div>` : ''}
+                  <ul class="show-lineup">
+                    ${stage.Lineup.map(item => `<li>${item.replace(/  /g, '&nbsp;&nbsp;')}</li>`).join('')}
+                  </ul>
+                </div>`
+              ).join('') : ''}
+              <a class="show-btn" href="${show.ButtonURL}" target="_blank">${show.ButtonLabel}</a>
+            </div>
           </div>
-          <div class="show-content">
-            <h2 class="show-title">${show.Title}</h2>
-            <div class="show-location"><em>${show.Location}</em></div>
-            <div class="show-desc">${show.Description}</div>
-            ${Array.isArray(show["Stage Name"]) ? show["Stage Name"].map(stage =>
-              `<div class="show-stage">
-                ${stage.name ? `<div class="show-stage-name">${stage.name}</div>` : ''}
-                <ul class="show-lineup">
-                  ${stage.Lineup.map(item => `<li>${item.replace(/  /g, '&nbsp;&nbsp;')}</li>`).join('')}
-                </ul>
-              </div>`
-            ).join('') : ''}
-            <a class="show-btn" href="${show.ButtonURL}" target="_blank">${show.ButtonLabel}</a>
-          </div>
-        </div>
-      `).join('')}
+        `;
+      }).join('')}
     </div>
   `;
 });
