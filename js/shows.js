@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   }
 
   main.innerHTML = `
-    <div style="height:60px"></div>
+    <div style="height:100px"></div>
     <div class="shows-list">
       ${shows.map(show => {
         const showDate = new Date(show.Date);
