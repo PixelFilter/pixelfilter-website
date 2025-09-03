@@ -30,13 +30,16 @@
         <div class="contact-image">
           <img src="assets/images/Contact.webp" alt="Contact" />
         </div>
-        <form class="contact-form">
+        <form id="contactForm" class="contact-form" action="https://formsubmit.co/iampixelfilter@gmail.com" method="POST">
           <label for="name">Name</label>
           <input type="text" id="name" name="name" required>
           <label for="email">Email</label>
           <input type="email" id="email" name="email" required>
           <label for="message">Message</label>
           <textarea id="message" name="message" rows="5" required></textarea>
+          <!-- Formsubmit.co options -->
+          <input type="hidden" name="_captcha" value="false">
+          <input type="hidden" name="_next" value="https://formsubmit.co/thanks.html">
           <button type="submit" class="show-btn">Submit</button>
         </form>
       </section>
@@ -47,3 +50,26 @@
 </html>
 <script src="js/header-scroll.js"></script>
 <script src="js/footer.js"></script>
+<script>
+document.getElementById('contactForm').addEventListener('submit', function(e) {
+  e.preventDefault();
+  const form = e.target;
+  const data = new FormData(form);
+
+  fetch(form.action, {
+    method: 'POST',
+    body: data
+  })
+  .then(response => {
+    if (response.ok) {
+      form.reset();
+      alert('Thank you! Your message has been sent.');
+    } else {
+      alert('There was an error. Please try again.');
+    }
+  })
+  .catch(() => {
+    alert('There was an error. Please try again.');
+  });
+});
+</script>
