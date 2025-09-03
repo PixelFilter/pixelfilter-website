@@ -24,20 +24,15 @@
       </nav>
     </div>
   </header>
-  <div class="container">
-    <main>
-    </main>
-  </div>
-  <div class="video-header-embed">
+  <div id="video-bg-section">
     <iframe
-      width="100%"
-      height="400"
-      src="https://www.youtube.com/embed/wip3zTqO5p8?autoplay=1&mute=1&controls=0&showinfo=0&rel=0&loop=1&playlist=wip3zTqO5p8&modestbranding=1&fs=0&disablekb=1&iv_load_policy=3&rel=0&start=600&mute=1"
-      title="YouTube video player"
+      class="video-bg-iframe"
+      src="https://www.youtube.com/embed/wip3zTqO5p8?autoplay=1&mute=1&controls=0&showinfo=0&rel=0&loop=1&playlist=wip3zTqO5p8&modestbranding=1&fs=0&disablekb=1&iv_load_policy=3"
+      title="YouTube video background"
       frameborder="0"
       allow="autoplay; encrypted-media"
       allowfullscreen
-      style="display:block; width:100%; height:700px; object-fit:cover; pointer-events:none;">
+      style="pointer-events:none;">
     </iframe>
   </div>
   <div class="container">
@@ -282,44 +277,60 @@
   <footer id="site-footer"></footer>
 </body>
 <style>
-.video-header-embed {
+#video-bg-section {
   width: 100vw;
-  position: relative;
-  left: 50%;
-  right: 50%;
-  margin-left: -50vw;
-  margin-right: -50vw;
-  background: #000;
-  margin-bottom: 32px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  height: 100vh;
+  max-width: 100%;
   overflow: hidden;
-  height: 700px;
-  z-index: 10;
+  position: relative;
+  background: #000;
 }
-.video-header-embed iframe {
-  width: 120vw;
-  min-width: 100vw;
-  max-width: none;
-  height: 900px;
-  border: none;
-  object-fit: cover;
+#video-bg-section .video-bg-iframe {
   position: absolute;
-  top: 0;
+  top: 50%;
   left: 50%;
-  transform: translateX(-50%);
+  transform: translate(-50%, -50%);
+  min-width: 100vw;
+  min-height: 100vh;
+  width: 177.78vh; /* 16/9 aspect ratio based on viewport height */
+  height: 100vh;
+  border: none;
+  pointer-events: none;
+  display: block;
+  background: #000;
 }
 @media (max-width: 600px) {
-  .video-header-embed {
+  #video-bg-section {
     height: 340px;
   }
-  .video-header-embed iframe {
+  #video-bg-section .video-bg-iframe {
     height: 340px;
-    top: 0;
+    width: 604px;
+    min-width: 100vw;
   }
 }
 </style>
+<script>
+function resizeVideoBgIframe() {
+  var section = document.getElementById('video-bg-section');
+  var iframe = section.querySelector('.video-bg-iframe');
+  if (!iframe) return;
+  var w = window.innerWidth;
+  var h = window.innerHeight;
+  var aspect = 16/9;
+  if (w/h < aspect) {
+    // viewport is taller than video: fit width
+    iframe.style.width = (h * aspect) + 'px';
+    iframe.style.height = h + 'px';
+  } else {
+    // viewport is wider than video: fit height
+    iframe.style.width = w + 'px';
+    iframe.style.height = (w / aspect) + 'px';
+  }
+}
+window.addEventListener('resize', resizeVideoBgIframe);
+window.addEventListener('DOMContentLoaded', resizeVideoBgIframe);
+</script>
 </html>
 <script src="js/header-scroll.js"></script>
 <script src="js/footer.js"></script>
