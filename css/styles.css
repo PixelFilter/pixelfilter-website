@@ -250,6 +250,24 @@ html, body {
   font-size: 20px;
   transition: color 0.2s;
 }
+.footer-icon svg {
+  width: 28px;
+  height: 28px;
+  color: #aaa;
+  vertical-align: middle;
+  margin-bottom: -8px;
+  display: inline-block;
+  overflow: visible;
+  transition: color 0.2s;
+  transform: scale(1.6);
+}
+.footer-icon:hover svg {
+  color: #fff;
+}
+.footer-icon:active svg,
+.footer-icon:focus svg {
+  color: #aaa;
+}
 .footer-icon:hover i {
   color: #fff;
 }
