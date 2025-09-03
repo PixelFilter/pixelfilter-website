@@ -26,6 +26,52 @@
   </header>
   <div class="container">
     <main>
+      <h1>Photo Gallery</h1>
+      <div id="photo-grid"></div>
+      <style>
+        #photo-grid {
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+          gap: 16px;
+          margin-top: 24px;
+        }
+        #photo-grid img {
+          width: 100%;
+          height: auto;
+          border-radius: 8px;
+          box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+          object-fit: cover;
+          transition: transform 0.2s;
+        }
+        #photo-grid img:hover {
+          transform: scale(1.04);
+        }
+      </style>
+      <script>
+        // Fetch photo filenames from JSON and render grid
+        function shuffle(array) {
+          for (let i = array.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [array[i], array[j]] = [array[j], array[i]];
+          }
+        }
+
+        fetch('data/photos.json')
+          .then(response => response.json())
+          .then(photoFiles => {
+            shuffle(photoFiles);
+            const grid = document.getElementById('photo-grid');
+            photoFiles.forEach(file => {
+              const img = document.createElement('img');
+              img.src = `assets/images/Photos/${file}`;
+              img.alt = file.replace(/\.webp$/, '');
+              grid.appendChild(img);
+            });
+          })
+          .catch(err => {
+            document.getElementById('photo-grid').innerHTML = '<p>Could not load photos.</p>';
+          });
+      </script>
     </main>
   </div>
   <footer id="site-footer"></footer>
