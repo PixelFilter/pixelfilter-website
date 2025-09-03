@@ -198,17 +198,18 @@ html, body {
   }
 }
 .about-text {
-  font-size: 1.25rem;
+  font-size: 1.23rem;
   line-height: 1.7;
   color: #979797;
 }
 .about-section {
   margin-top: 20rem;
+  gap: 64px;
 }
 @media (max-width: 800px) {
   .about-section {
     flex-direction: column !important;
-    gap: 20px !important;
+    gap: 32px !important;
     margin-top: 6rem !important;
   }
   .about-section img {
