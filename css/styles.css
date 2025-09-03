@@ -23,7 +23,8 @@ html, body {
 .videos-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 2rem;
+  row-gap: 3rem;
+  column-gap: 2rem;
   margin: 2rem 0;
   padding: 0;
 }
@@ -72,7 +73,8 @@ html, body {
 @media (max-width: 600px) {
   .videos-grid {
     grid-template-columns: 1fr;
-    gap: 1rem;
+    row-gap: 2rem;
+    column-gap: 0;
     padding-left: 1rem;
     padding-right: 1rem;
   }
@@ -194,4 +196,12 @@ html, body {
   .show-content {
     padding: 1.2rem;
   }
+}
+.about-text {
+  font-size: 1.25rem;
+  line-height: 1.7;
+  color: #979797;
+}
+.about-section {
+  margin-top: 20rem;
 }
