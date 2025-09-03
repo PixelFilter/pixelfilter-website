@@ -18,15 +18,15 @@ document.addEventListener('DOMContentLoaded', async () => {
       ${shows.map(show => {
         const showDate = new Date(show.Date);
         const now = new Date();
-        // Remove time portion for comparison
         showDate.setHours(0,0,0,0);
         now.setHours(0,0,0,0);
         const isPast = showDate < now;
+        const isFuture = showDate >= now;
         return `
           <div class="show-item">
             <div class="show-poster-wrap">
               <img class="show-poster" src="${show.PosterURL}" alt="${show.Title}">
-              <div class="show-date-overlay${isPast ? ' past-show' : ''}">${formatDate(show.Date)}</div>
+              <div class="show-date-overlay${isPast ? ' past-show' : ''}${isFuture ? ' future-show' : ''}">${formatDate(show.Date)}</div>
             </div>
             <div class="show-content">
               <h2 class="show-title">${show.Title}</h2>

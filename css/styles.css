@@ -309,3 +309,7 @@ html, body {
   z-index: 3;
   pointer-events: none;
 }
+.show-date-overlay.future-show .show-date-month,
+.show-date-overlay.future-show .show-date-day {
+  color: #000 !important;
+}
