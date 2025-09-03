@@ -606,3 +606,11 @@ body, html {
   position: relative;
   z-index: 1;
 }
+/* Move shows content lower */
+.container main {
+  margin-top: 40px;
+}
+/* Move shows content lower */
+.shows-list {
+  margin-top: 40px;
+}
