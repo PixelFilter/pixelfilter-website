@@ -85,16 +85,12 @@ html, body {
   display: flex;
   flex-direction: column;
   gap: 2.5rem;
-  margin: 2.5rem 0;
+  margin: 15rem 0 2.5rem 0;
 }
 .show-item {
   display: flex;
   gap: 2rem;
-  background: #111;
-  border-radius: 18px;
-  overflow: hidden;
-  box-shadow: 0 2px 16px rgba(0,0,0,0.18);
-  align-items: stretch;
+  align-items: flex-start;
   padding: 0;
 }
 .show-poster-wrap {
@@ -129,6 +125,7 @@ html, body {
 }
 .show-content {
   flex: 1;
+  align-self: flex-start;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -168,18 +165,18 @@ html, body {
 }
 .show-btn {
   display: inline-block;
-  background: #ffb700;
-  color: #222;
+  background: #222;
+  color: #fff;
   font-weight: 700;
-  font-size: 1.08rem;
-  padding: 0.7em 1.5em;
-  border-radius: 8px;
+  font-size: 0.95rem;
+  padding: 0.5em 1em;
+  border-radius: 4px;
   text-decoration: none;
   margin-top: 0.7rem;
   transition: background 0.18s;
 }
 .show-btn:hover {
-  background: #ffd966;
+  background: #444;
 }
 @media (max-width: 900px) {
   .show-item {
