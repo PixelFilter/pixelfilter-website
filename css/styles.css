@@ -1,15 +1,15 @@
 /* Center all page content with responsive horizontal padding */
 .container {
-  max-width: 1200px;
+  max-width: 1400px;
   margin-left: auto;
   margin-right: auto;
-  padding-left: 2rem;
-  padding-right: 2rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
 }
-@media (max-width: 600px) {
+@media (max-width: 800px) {
   .container {
-    padding-left: 1rem;
-    padding-right: 1rem;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
   }
 }
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@500;700&display=swap');
