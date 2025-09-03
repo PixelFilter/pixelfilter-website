@@ -84,7 +84,7 @@ html, body {
 .shows-list {
   display: flex;
   flex-direction: column;
-  gap: 2.5rem;
+  gap: 5rem;
   margin: 15rem 0 2.5rem 0;
 }
 .show-item {
@@ -95,8 +95,8 @@ html, body {
 }
 .show-poster-wrap {
   position: relative;
-  min-width: 220px;
-  max-width: 220px;
+  min-width: 500px;
+  max-width: 500px;
   display: flex;
   align-items: flex-start;
   justify-content: flex-start;
@@ -105,7 +105,7 @@ html, body {
   width: 100%;
   aspect-ratio: 3/4;
   object-fit: cover;
-  border-radius: 0 0 0 18px;
+  border-radius: 0;
   display: block;
   background: #222;
 }
@@ -118,7 +118,7 @@ html, body {
   font-weight: 700;
   font-size: 1.1rem;
   padding: 0.4em 0.9em;
-  border-radius: 8px;
+  border-radius: 0;
   letter-spacing: 0.08em;
   box-shadow: 0 2px 8px rgba(0,0,0,0.18);
   z-index: 2;
@@ -134,46 +134,49 @@ html, body {
 .show-title {
   font-size: 1.7rem;
   font-weight: 700;
-  margin-bottom: 0.7rem;
+  margin-bottom: 1.5rem;
   color: #fff;
 }
 .show-location {
   font-size: 1.1rem;
   color: #ccc;
-  margin-bottom: 0.7rem;
+  margin-bottom: 1.5rem;
 }
 .show-desc {
   font-size: 1rem;
   color: #bbb;
-  margin-bottom: 1.2rem;
+  margin-bottom: 2rem;
 }
 .show-stage-name {
-  font-size: 1.05rem;
+  font-size: 1.2rem;
   font-weight: 600;
-  color: #ffb700;
-  margin-bottom: 0.3rem;
+  color: #fff;
+  margin-bottom: 1.2rem;
 }
 .show-lineup {
   list-style: none;
   padding: 0;
-  margin: 0 0 1.2rem 0;
+  margin: 0 0 2rem 0;
 }
 .show-lineup li {
   font-size: 0.98rem;
   color: #eee;
-  margin-bottom: 0.2rem;
+  margin-bottom: 0.7rem;
 }
 .show-btn {
   display: inline-block;
   background: #222;
-  color: #fff;
-  font-weight: 700;
+  color: #b0b0b0;
+  font-weight: 200;
   font-size: 0.95rem;
-  padding: 0.5em 1em;
-  border-radius: 4px;
+  padding: 1em 1em 1em 1em;
+  border-radius: 0;
   text-decoration: none;
   margin-top: 0.7rem;
   transition: background 0.18s;
+  text-align: center;
+  width: auto;
+  max-width: 120px;
 }
 .show-btn:hover {
   background: #444;
@@ -186,7 +189,7 @@ html, body {
   .show-poster-wrap {
     min-width: 100%;
     max-width: 100%;
-    border-radius: 18px 18px 0 0;
+    border-radius: 0;
   }
   .show-content {
     padding: 1.2rem;
