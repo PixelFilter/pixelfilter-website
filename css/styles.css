@@ -207,10 +207,12 @@ html, body {
   border-radius: 0;
   text-decoration: none;
   margin-top: 0.7rem;
-  transition: background 0.18s;
+  transition: none;
   text-align: center;
   width: auto;
   max-width: 120px;
+  box-shadow: none;
+  border: none;
 }
 .show-btn:hover {
   background: #444;
