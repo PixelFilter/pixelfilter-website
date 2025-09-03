@@ -245,14 +245,17 @@ html, body {
   vertical-align: middle;
   transition: transform 0.2s;
 }
-.footer-icon svg {
-  width: 22px;
-  height: 22px;
-  fill: #aaa;
+.footer-icon i {
+  color: #aaa;
+  font-size: 20px;
+  transition: color 0.2s;
 }
-.footer-icon:hover {
-  transform: scale(1.15);
-  opacity: 0.85;
+.footer-icon:hover i {
+  color: #fff;
+}
+.footer-icon:active i,
+.footer-icon:focus i {
+  color: #aaa;
 }
 .footer-error {
   color: #ff5555;
