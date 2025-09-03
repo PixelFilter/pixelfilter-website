@@ -220,7 +220,7 @@ html, body {
   color: #979797;
 }
 .about-section {
-  margin-top: 20rem;
+  margin-top: 15rem;
   gap: 64px;
 }
 @media (max-width: 800px) {
