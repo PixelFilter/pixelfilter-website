@@ -80,3 +80,118 @@ html, body {
     padding: 0.7rem;
   }
 }
+/* Shows List Styles */
+.shows-list {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+  margin: 2.5rem 0;
+}
+.show-item {
+  display: flex;
+  gap: 2rem;
+  background: #111;
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 2px 16px rgba(0,0,0,0.18);
+  align-items: stretch;
+  padding: 0;
+}
+.show-poster-wrap {
+  position: relative;
+  min-width: 220px;
+  max-width: 220px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+.show-poster {
+  width: 100%;
+  aspect-ratio: 3/4;
+  object-fit: cover;
+  border-radius: 0 0 0 18px;
+  display: block;
+  background: #222;
+}
+.show-date-overlay {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  background: #222;
+  color: #fff;
+  font-weight: 700;
+  font-size: 1.1rem;
+  padding: 0.4em 0.9em;
+  border-radius: 8px;
+  letter-spacing: 0.08em;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.18);
+  z-index: 2;
+}
+.show-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 2rem 0 2rem 0;
+}
+.show-title {
+  font-size: 1.7rem;
+  font-weight: 700;
+  margin-bottom: 0.7rem;
+  color: #fff;
+}
+.show-location {
+  font-size: 1.1rem;
+  color: #ccc;
+  margin-bottom: 0.7rem;
+}
+.show-desc {
+  font-size: 1rem;
+  color: #bbb;
+  margin-bottom: 1.2rem;
+}
+.show-stage-name {
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: #ffb700;
+  margin-bottom: 0.3rem;
+}
+.show-lineup {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 1.2rem 0;
+}
+.show-lineup li {
+  font-size: 0.98rem;
+  color: #eee;
+  margin-bottom: 0.2rem;
+}
+.show-btn {
+  display: inline-block;
+  background: #ffb700;
+  color: #222;
+  font-weight: 700;
+  font-size: 1.08rem;
+  padding: 0.7em 1.5em;
+  border-radius: 8px;
+  text-decoration: none;
+  margin-top: 0.7rem;
+  transition: background 0.18s;
+}
+.show-btn:hover {
+  background: #ffd966;
+}
+@media (max-width: 900px) {
+  .show-item {
+    flex-direction: column;
+    gap: 0;
+  }
+  .show-poster-wrap {
+    min-width: 100%;
+    max-width: 100%;
+    border-radius: 18px 18px 0 0;
+  }
+  .show-content {
+    padding: 1.2rem;
+  }
+}
