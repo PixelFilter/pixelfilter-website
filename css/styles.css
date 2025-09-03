@@ -316,13 +316,13 @@ html, body {
 /* Contact Page Layout */
 .contact-section {
   display: flex;
-  gap: 3rem;
+  gap: 5rem;
   margin-top: 15rem;
   margin-bottom: 4rem;
   align-items: flex-start;
 }
 .contact-image img {
-  max-width: 400px;
+  max-width: 500px;
   width: 100%;
   height: auto;
   border-radius: 8px;
@@ -399,6 +399,7 @@ html, body {
   }
   .contact-image img {
     max-width: 100%;
+    width: 100%;
     margin-bottom: 1.5rem;
   }
   .contact-form {
