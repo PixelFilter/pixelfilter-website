@@ -1,3 +1,16 @@
+.photos-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  row-gap: 0;
+  column-gap: 0;
+  margin: 15rem 0 0 0;
+  padding: 0;
+.photos-grid img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+}
 /* Center all page content with responsive horizontal padding */
 .container {
   max-width: 1400px;
