@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', async () => {
               `<div class="show-stage">
                 ${stage.name ? `<div class="show-stage-name">${stage.name}</div>` : ''}
                 <ul class="show-lineup">
-                  ${stage.Lineup.map(item => `<li>${item}</li>`).join('')}
+                  ${stage.Lineup.map(item => `<li>${item.replace(/  /g, '&nbsp;&nbsp;')}</li>`).join('')}
                 </ul>
               </div>`
             ).join('') : ''}
