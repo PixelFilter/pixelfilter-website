@@ -115,15 +115,32 @@ html, body {
   position: absolute;
   top: 18px;
   right: 18px;
-  background: #222;
-  color: #fff;
-  font-weight: 700;
+  background: #ffffff;
+  color: #a1a1a1;
+  font-weight: 200;
   font-size: 1.1rem;
-  padding: 0.4em 0.9em;
+  padding: 0.5em 0.9em;
   border-radius: 0;
   letter-spacing: 0.08em;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.18);
+  box-shadow: 0 2px 8px rgba(45, 40, 40, 0.18);
   z-index: 2;
+  text-align: center;
+}
+.show-date-month {
+  display: block;
+  font-size: 0.8rem;
+  font-weight: 300;
+  text-transform: uppercase;
+  margin-bottom: 0.1em;
+  letter-spacing: 0.08em;
+}
+
+.show-date-day {
+  display: block;
+  font-size: 1.6rem;
+  font-weight: 500;
+  line-height: 1;
+  margin-top: 0.1em;
 }
 .show-content {
   flex: 1;

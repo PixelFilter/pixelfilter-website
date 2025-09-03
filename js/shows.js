@@ -7,7 +7,10 @@ document.addEventListener('DOMContentLoaded', async () => {
     const date = new Date(dateStr);
     const month = date.toLocaleString('en-US', { month: 'short' }).toUpperCase();
     const day = date.getDate();
-    return `${month} ${day}`;
+    return `
+      <div class="show-date-month">${month}</div>
+      <div class="show-date-day">${day}</div>
+    `;
   }
 
   main.innerHTML = `
