@@ -205,3 +205,20 @@ html, body {
 .about-section {
   margin-top: 20rem;
 }
+@media (max-width: 800px) {
+  .about-section {
+    flex-direction: column !important;
+    gap: 20px !important;
+    margin-top: 6rem !important;
+  }
+  .about-section img {
+    max-width: 100%;
+    width: 100%;
+    height: auto;
+    margin-bottom: 1.5rem;
+  }
+  .about-text {
+    font-size: 1.1rem;
+    line-height: 1.6;
+  }
+}
