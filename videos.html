@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>PIXELFILTER | Videos</title>
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="css/styles.css">
   <link rel="stylesheet" href="css/components/header.css">
 </head>
 <body>
@@ -21,8 +21,29 @@
   </nav>
 </header>
   <main>
-    <h1>Home</h1>
-    <p>Video content will go here.</p>
+    <div id="videos-grid" class="videos-grid"></div>
+    <script>
+      fetch('data/videos.json')
+        .then(res => res.json())
+        .then(videos => {
+          const grid = document.getElementById('videos-grid');
+          grid.innerHTML = videos.map(video => {
+            // Extract YouTube ID from URL
+            const match = video.VideoURL.match(/v=([a-zA-Z0-9_-]+)/);
+            const id = match ? match[1] : '';
+            const thumb = id ? `https://img.youtube.com/vi/${id}/hqdefault.jpg` : '';
+            return `
+              <div class="video-item" onclick="window.open('${video.VideoURL}', '_blank')">
+                <img src="${thumb}" alt="Thumbnail for ${video.Title}" class="video-thumb"/>
+                <div class="video-info">
+                  <h2 class="video-title">${video.Title}</h2>
+                  <p class="video-desc">${video.Description}</p>
+                </div>
+              </div>
+            `;
+          }).join('');
+        });
+    </script>
   </main>
 </body>
 </html>
