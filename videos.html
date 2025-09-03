@@ -304,8 +304,9 @@
 }
 #video-bg-section .video-bg-overlay {
   position: absolute;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
+  inset: 0;
+  width: 100%;
+  height: 100%;
   background: rgba(0,0,0,0.3);
   z-index: 2;
   pointer-events: none;
@@ -315,9 +316,18 @@
     height: 340px;
   }
   #video-bg-section .video-bg-iframe {
+    width: 120vw;
     height: 340px;
-    width: 604px;
-    min-width: 100vw;
+    min-width: unset;
+    min-height: unset;
+    max-width: none;
+    max-height: 340px;
+    object-fit: cover;
+  }
+  #video-bg-section .video-bg-overlay {
+    height: 340px;
+    width: 100vw;
+    inset: 0;
   }
 }
 </style>
