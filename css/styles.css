@@ -6,6 +6,18 @@
   padding: 0;
 }
 
+@media (max-width: 600px) {
+  .photos-grid {
+    grid-template-columns: 1fr;
+    gap: 10px;
+    margin: 4rem 0 0 0;
+  }
+  .photos-grid img {
+    min-height: 120px;
+    height: 120px;
+  }
+}
+
 .photos-grid img {
   width: 100%;
   min-height: 200px;
@@ -102,7 +114,7 @@ html, body {
   display: flex;
   flex-direction: column;
   gap: 5rem;
-  margin: 15rem 0 2.5rem 0;
+  margin: 5rem 0 1.5rem 0;
 }
 .show-item {
   display: flex;
@@ -231,14 +243,34 @@ html, body {
     padding: 1.2rem;
   }
 }
+@media (max-width: 600px) {
+  .shows-list {
+    gap: 2rem;
+    margin: 2rem 0 1rem 0;
+  }
+  .show-title {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+  }
+  .show-location,
+  .show-desc,
+  .show-stage-name,
+  .show-lineup li {
+    font-size: 1rem;
+  }
+  .show-poster-wrap {
+    min-width: 100%;
+    max-width: 100%;
+  }
+}
 .about-text {
   font-size: 1.23rem;
   line-height: 1.7;
   color: #979797;
 }
 .about-section {
-  margin-top: 15rem;
-  gap: 64px;
+  margin-top: 8rem;
+  gap: 32px;
 }
 @media (max-width: 800px) {
   .about-section {
@@ -337,6 +369,25 @@ html, body {
   margin-top: 15rem;
   margin-bottom: 4rem;
   align-items: flex-start;
+}
+@media (max-width: 600px) {
+  .contact-section {
+    flex-direction: column;
+    gap: 1.5rem;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+  }
+  .contact-image img {
+    max-width: 100%;
+    width: 100%;
+    margin-bottom: 1rem;
+  }
+  .contact-form {
+    width: 100%;
+    padding: 1rem 0.5rem;
+    max-width: 100%;
+    box-sizing: border-box;
+  }
 }
 .contact-image img {
   max-width: 500px;
