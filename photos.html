@@ -28,13 +28,24 @@
       <div id="photo-grid"></div>
       <style>
         #photo-grid {
-          display: grid;
-          grid-template-columns: repeat(4, minmax(220px, 1fr));
-          gap: 16px;
+          display: flex;
+          flex-direction: column;
+          gap: 24px;
           margin-top: 15rem;
         }
-        #photo-grid img {
-          height: 320px;
+        .photo-row {
+          display: flex;
+          flex-direction: row;
+          gap: 16px;
+          list-style: none;
+          padding: 0;
+          margin: 0;
+          width: 100%;
+          justify-content: space-between;
+          align-items: stretch;
+        }
+        .photo-row img {
+          height: 220px;
           width: auto;
           max-width: 100%;
           border-radius: 8px;
@@ -42,12 +53,27 @@
           object-fit: contain;
           transition: transform 0.2s;
         }
-        #photo-grid img:hover {
+        .photo-row img:hover {
           transform: scale(1.04);
         }
       </style>
       <script>
-        // Fetch photo filenames from JSON and render grid
+        // Responsive justified photo grid
+        const BREAKPOINTS = [
+          { min: 1200, height: 320 },
+          { min: 800, height: 220 },
+          { min: 0, height: 160 }
+        ];
+        const GUTTER = 16;
+
+        function getTargetRowHeight() {
+          const w = window.innerWidth;
+          for (const bp of BREAKPOINTS) {
+            if (w >= bp.min) return bp.height;
+          }
+          return 160;
+        }
+
         function shuffle(array) {
           for (let i = array.length - 1; i > 0; i--) {
             const j = Math.floor(Math.random() * (i + 1));
@@ -55,21 +81,172 @@
           }
         }
 
-        fetch('data/photos.json')
-          .then(response => response.json())
-          .then(photoFiles => {
-            shuffle(photoFiles);
-            const grid = document.getElementById('photo-grid');
-            photoFiles.forEach(file => {
-              const img = document.createElement('img');
-              img.src = `assets/images/Photos/${file}`;
-              img.alt = file.replace(/\.webp$/, '');
-              grid.appendChild(img);
+        function getImageMeta(files) {
+          // Returns Promise<[ {src, width, height, aspect, alt}, ... ]>
+          return Promise.all(files.map(file => new Promise(resolve => {
+            const img = new Image();
+            img.src = `assets/images/Photos/${file}`;
+            img.onload = () => {
+              resolve({
+                src: img.src,
+                width: img.naturalWidth,
+                height: img.naturalHeight,
+                aspect: img.naturalWidth / img.naturalHeight,
+                alt: file.replace(/\.webp$/, '')
+              });
+            };
+            img.onerror = () => resolve(null);
+          }))).then(arr => arr.filter(Boolean));
+        }
+
+        function computeRows(images, containerWidth, targetRowHeight) {
+          const rows = [];
+          let row = [];
+          let rowAspectSum = 0;
+          for (let i = 0; i < images.length; i++) {
+            const img = images[i];
+            row.push(img);
+            rowAspectSum += img.aspect;
+            // Compute total width at target height + gutters
+            const totalWidth = rowAspectSum * targetRowHeight + GUTTER * (row.length - 1);
+            // Only break row if totalWidth exceeds containerWidth and row has at least 2 images
+            if ((totalWidth >= containerWidth && row.length > 1) || (i === images.length - 1)) {
+              // Scale row so it fills container width (except last row)
+              const isLastRow = i === images.length - 1;
+              const scale = isLastRow
+                ? 1
+                : (containerWidth - GUTTER * (row.length - 1)) / (rowAspectSum * targetRowHeight);
+              rows.push({
+                images: row,
+                height: targetRowHeight * scale
+              });
+              row = [];
+              rowAspectSum = 0;
+            }
+          }
+          return rows;
+        }
+
+        function renderGrid(rows, container) {
+          container.innerHTML = '';
+          rows.forEach(row => {
+            const ul = document.createElement('ul');
+            ul.className = 'photo-row';
+            ul.style.height = row.height + 'px';
+            ul.style.margin = '0';
+            ul.style.padding = '0';
+            ul.style.display = 'flex';
+            ul.style.gap = GUTTER + 'px';
+            ul.setAttribute('role', 'list');
+            row.images.forEach((img, idx) => {
+              const li = document.createElement('li');
+              li.style.flex = `0 0 ${img.aspect * row.height}px`;
+              li.style.margin = '0';
+              li.style.padding = '0';
+              li.style.position = 'relative';
+
+              // Responsive srcset/sizes
+              const imageEl = document.createElement('img');
+              imageEl.src = img.src;
+              imageEl.alt = img.alt;
+              imageEl.loading = 'lazy';
+              imageEl.tabIndex = 0;
+              imageEl.style.width = '100%';
+              imageEl.style.height = '100%';
+              imageEl.style.objectFit = 'contain';
+              imageEl.style.borderRadius = '8px';
+              imageEl.style.boxShadow = '0 2px 8px rgba(0,0,0,0.12)';
+              imageEl.setAttribute('srcset', `${img.src} 1x`);
+              imageEl.setAttribute('sizes', '100vw');
+
+              li.appendChild(imageEl);
+
+              // Lightbox
+              imageEl.onclick = () => openLightbox(img);
+              imageEl.onkeydown = e => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                  openLightbox(img);
+                }
+              };
+
+              ul.appendChild(li);
             });
-          })
-          .catch(err => {
-            document.getElementById('photo-grid').innerHTML = '<p>Could not load photos.</p>';
+            // Remove trailing gutter
+            ul.style.justifyContent = 'flex-start';
+            container.appendChild(ul);
           });
+        }
+
+        // Lightbox
+        let lightboxEl = null;
+        function openLightbox(img) {
+          if (lightboxEl) lightboxEl.remove();
+          lightboxEl = document.createElement('div');
+          lightboxEl.className = 'photo-lightbox';
+          lightboxEl.tabIndex = 0;
+          lightboxEl.style.position = 'fixed';
+          lightboxEl.style.left = '0';
+          lightboxEl.style.top = '0';
+          lightboxEl.style.width = '100vw';
+          lightboxEl.style.height = '100vh';
+          lightboxEl.style.background = 'rgba(0,0,0,0.92)';
+          lightboxEl.style.display = 'flex';
+          lightboxEl.style.alignItems = 'center';
+          lightboxEl.style.justifyContent = 'center';
+          lightboxEl.style.zIndex = '9999';
+          lightboxEl.style.cursor = 'pointer';
+
+          const imgEl = document.createElement('img');
+          imgEl.src = img.src;
+          imgEl.alt = "";
+          imgEl.style.maxWidth = '90vw';
+          imgEl.style.maxHeight = '90vh';
+          imgEl.style.borderRadius = '12px';
+          imgEl.style.boxShadow = '0 4px 32px rgba(0,0,0,0.32)';
+          imgEl.tabIndex = 0;
+
+          lightboxEl.appendChild(imgEl);
+
+          document.body.appendChild(lightboxEl);
+          lightboxEl.focus();
+
+          function close() {
+            if (lightboxEl) {
+              lightboxEl.remove();
+              lightboxEl = null;
+            }
+          }
+          lightboxEl.onclick = close;
+          lightboxEl.onkeydown = e => {
+            if (e.key === 'Escape') close();
+          };
+        }
+
+        function updateGrid() {
+          fetch('data/photos.json')
+            .then(response => response.json())
+            .then(photoFiles => {
+              shuffle(photoFiles);
+              getImageMeta(photoFiles).then(images => {
+                const grid = document.getElementById('photo-grid');
+                const containerWidth = grid.offsetWidth || grid.clientWidth || window.innerWidth;
+                const targetRowHeight = getTargetRowHeight();
+                const rows = computeRows(images, containerWidth, targetRowHeight);
+                renderGrid(rows, grid);
+              });
+            })
+            .catch(err => {
+              document.getElementById('photo-grid').innerHTML = '<p>Could not load photos.</p>';
+            });
+        }
+
+        window.addEventListener('resize', () => {
+          updateGrid();
+        });
+
+        document.addEventListener('DOMContentLoaded', () => {
+          updateGrid();
+        });
       </script>
     </main>
   <footer id="site-footer"></footer>
