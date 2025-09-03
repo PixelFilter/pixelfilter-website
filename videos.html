@@ -44,26 +44,99 @@
     <main>
       <div id="videos-grid" class="videos-grid"></div>
       <script>
-        fetch('data/videos.json')
-        .then(res => res.json())
-        .then(videos => {
-          const grid = document.getElementById('videos-grid');
-          grid.innerHTML = videos.map(video => {
-            // Extract YouTube ID from URL
-            const match = video.VideoURL.match(/v=([a-zA-Z0-9_-]+)/);
-            const id = match ? match[1] : '';
-            const thumb = id ? `https://img.youtube.com/vi/${id}/hqdefault.jpg` : '';
-            return `
-              <div class="video-item" onclick="window.open('${video.VideoURL}', '_blank')">
-                <img src="${thumb}" alt="Thumbnail for ${video.Title}" class="video-thumb"/>
-                <div class="video-info">
-                  <h2 class="video-title">${video.Title}</h2>
-                  <p class="video-desc">${video.Description}</p>
-                </div>
+      fetch('data/videos.json')
+      .then(res => res.json())
+      .then(videos => {
+        const grid = document.getElementById('videos-grid');
+        grid.innerHTML = videos.map((video, idx) => {
+          // Extract YouTube ID from URL
+          const match = video.VideoURL.match(/v=([a-zA-Z0-9_-]+)/);
+          const id = match ? match[1] : '';
+          const thumb = id ? `https://img.youtube.com/vi/${id}/hqdefault.jpg` : '';
+          return `
+            <div class="video-item" data-video-id="${id}" data-title="${video.Title}" style="cursor:pointer;">
+              <img src="${thumb}" alt="Thumbnail for ${video.Title}" class="video-thumb"/>
+              <div class="video-info">
+                <h2 class="video-title">${video.Title}</h2>
+                <p class="video-desc">${video.Description}</p>
               </div>
-            `;
-          }).join('');
+            </div>
+          `;
+        }).join('');
+
+        // Add click event for fullscreen overlay
+        grid.querySelectorAll('.video-item').forEach(item => {
+          item.addEventListener('click', function() {
+            const videoId = item.getAttribute('data-video-id');
+            if (!videoId) return;
+            // Create overlay
+            const overlay = document.createElement('div');
+            overlay.style.position = 'fixed';
+            overlay.style.top = '0';
+            overlay.style.left = '0';
+            overlay.style.width = '100vw';
+            overlay.style.height = '100vh';
+            overlay.style.background = 'rgba(0,0,0,0.95)';
+            overlay.style.zIndex = '9999';
+            overlay.style.display = 'flex';
+            overlay.style.alignItems = 'center';
+            overlay.style.justifyContent = 'center';
+
+            // Close button
+            const closeBtn = document.createElement('button');
+            closeBtn.textContent = '×';
+            closeBtn.style.position = 'absolute';
+            closeBtn.style.top = '32px';
+            closeBtn.style.right = '48px';
+            closeBtn.style.fontSize = '3rem';
+            closeBtn.style.color = '#fff';
+            closeBtn.style.background = 'transparent';
+            closeBtn.style.border = 'none';
+            closeBtn.style.cursor = 'pointer';
+            closeBtn.style.zIndex = '10001';
+
+            // YouTube embed iframe
+            const iframe = document.createElement('iframe');
+            iframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0&showinfo=0&modestbranding=1`;
+            iframe.width = '90%';
+            iframe.height = '90%';
+            iframe.allow = 'autoplay; encrypted-media';
+            iframe.allowFullscreen = true;
+            iframe.frameBorder = '0';
+            iframe.style.borderRadius = '12px';
+            iframe.style.boxShadow = '0 0 32px #000';
+
+            overlay.appendChild(iframe);
+            overlay.appendChild(closeBtn);
+            document.body.appendChild(overlay);
+
+            // Request fullscreen
+            if (overlay.requestFullscreen) {
+              overlay.requestFullscreen();
+            } else if (overlay.webkitRequestFullscreen) {
+              overlay.webkitRequestFullscreen();
+            } else if (overlay.msRequestFullscreen) {
+              overlay.msRequestFullscreen();
+            }
+
+            // Remove overlay on close
+            closeBtn.onclick = () => {
+              document.body.removeChild(overlay);
+              if (document.fullscreenElement) {
+                document.exitFullscreen();
+              }
+            };
+
+            // Remove overlay if user exits fullscreen
+            document.addEventListener('fullscreenchange', function handler() {
+              if (!document.fullscreenElement && document.body.contains(overlay)) {
+                document.body.removeChild(overlay);
+                document.removeEventListener('fullscreenchange', handler);
+              }
+            });
+          });
         });
+      });
       </script>
     </main>
   </div>
