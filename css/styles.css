@@ -413,7 +413,7 @@ html, body {
 }
 @media (max-width: 600px) {
   .contact-section {
-    flex-direction: column;
+    flex-direction: column !important;
     gap: 1.5rem;
     margin-top: 2rem;
     margin-bottom: 2rem;
