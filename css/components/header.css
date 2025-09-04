@@ -194,8 +194,12 @@
    z-index: auto;
  }
  .pf-header__logo {
-   margin: 0 5.9rem 0 0;
    order: 1;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   margin: 0 auto;
+   width: auto;
  }
  .pf-header__nav {
    display: none;
