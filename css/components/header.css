@@ -112,7 +112,7 @@
       display: flex;
       flex-direction: row;
       align-items: center;
-      justify-content: space-between;
+      justify-content: flex-start;
       position: relative;
       text-align: left;
     }
@@ -193,13 +193,17 @@
    z-index: auto;
  }
  .pf-header__logo {
-   order: 1;
+   position: absolute;
+   left: 50%;
+   top: 50%;
+   transform: translate(-50%, -50%);
    display: flex;
    justify-content: center;
    align-items: center;
-   margin: 0 auto;
    width: auto;
-   position: static;
+   margin: 0;
+   order: 1;
+   z-index: 10;
  }
  .pf-header__nav {
    display: none;
