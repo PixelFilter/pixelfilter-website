@@ -415,7 +415,7 @@ html, body {
   .contact-section {
     flex-direction: column !important;
     gap: 1.5rem;
-    margin-top: 2rem;
+    margin-top: 4rem;
     margin-bottom: 2rem;
     align-items: center;
   }
