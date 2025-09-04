@@ -318,6 +318,11 @@ html, body {
   .about-section {
     margin-top: 5rem !important;
   }
+@media (max-width: 900px) {
+  .container > main > .contact-section {
+    margin-top: 5rem !important;
+  }
+}
 }
 @media (max-width: 800px) {
   .about-section {
@@ -340,6 +345,11 @@ html, body {
     width: 100%;
     order: 2;
   }
+@media (max-width: 800px) {
+  .contact-section {
+    margin-top: 0.5rem !important;
+  }
+}
 }
 /* Footer styles */
 #site-footer {
@@ -425,7 +435,7 @@ html, body {
 @media (max-width: 900px) {
   .contact-section {
     flex-direction: column !important;
-    margin-top: 0.5rem !important;
+    margin-top: 5rem !important;
     gap: 1.5rem;
     margin-bottom: 1rem;
     align-items: center;
@@ -521,7 +531,7 @@ html, body {
   .contact-section {
     flex-direction: column;
     gap: 2rem;
-    margin-top: 4rem;
+    margin-top: 0.5rem !important;
     overflow-x: hidden;
   }
   .contact-image img {
