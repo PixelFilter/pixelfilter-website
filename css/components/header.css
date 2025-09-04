@@ -43,14 +43,14 @@
 }
 
 .pf-header__logo img {
-  height: 40px;
-  width: auto;
-  display: block;
+    height: 28px;
+    width: auto;
+    display: block;
 }
 
 .pf-header__nav {
   display: flex;
-  gap: 1.5rem;
+  gap: 1rem;
   margin-left: auto;
 }
 
@@ -94,13 +94,13 @@
     flex-direction: column;
     align-items: flex-start;
     flex-direction: column;
-    padding: 2.5rem 0;
+    padding: 1.2rem 0;
     left: 0;
     width: 100%;
   }
   .pf-header__nav, .pf-header__socials {
     margin-top: 0.5rem;
-    gap: 1rem;
+    gap: 0.6rem;
     margin-left: 0;
   }
   .pf-header__socials {
@@ -109,17 +109,23 @@
   /* Mobile header: center logo and labels, stack vertically */
   @media (max-width: 700px) {
     .pf-header > .container {
+      display: flex;
       flex-direction: row;
       align-items: center;
-      justify-content: flex-start;
+      justify-content: center;
+      position: relative;
       text-align: left;
     }
     .pf-header__logo {
       margin-bottom: 0;
       display: flex;
-      justify-content: flex-start;
+      justify-content: center;
       align-items: center;
       width: auto;
+      margin: 0 auto;
+      order: 1;
+      position: static;
+      z-index: auto;
     }
     .pf-header__nav {
       flex-direction: row;
@@ -181,13 +187,15 @@
 @media (max-width: 700px) {
  .pf-header__hamburger {
    display: flex;
-   position: relative;
-   margin-right: 0.5rem;
+   position: static;
+   margin-right: auto;
    margin-left: 0;
-   order: -1;
+   order: 0;
+   z-index: auto;
  }
  .pf-header__logo {
-   margin-left: 0.5rem;
+   margin: 0 5.9rem 0 0;
+   order: 1;
  }
  .pf-header__nav {
    display: none;

@@ -32,7 +32,7 @@ footer, #site-footer {
   .photos-grid {
     grid-template-columns: 1fr !important;
     gap: 10px;
-    margin: 4rem 0 0 0;
+    margin: 2rem 0 0 0;
   }
   .photos-grid img {
     min-height: 120px;
@@ -43,7 +43,7 @@ footer, #site-footer {
   .mixes-grid {
     grid-template-columns: 1fr !important;
     gap: 10px;
-    margin: 4rem 0 0 0;
+    margin: 2rem 0 0 0;
   }
 }
 
@@ -282,7 +282,7 @@ html, body {
 @media (max-width: 600px) {
   .shows-list {
     gap: 2rem;
-    margin: 2rem 0 1rem 0;
+    margin: 1rem 0 0.5rem 0;
   }
   .show-title {
     font-size: 1.2rem;
@@ -312,7 +312,7 @@ html, body {
   .about-section {
     flex-direction: column !important;
     gap: 32px !important;
-    margin-top: 9rem !important;
+    margin-top: 3rem !important;
     align-items: center;
   }
   .about-section img {
@@ -415,8 +415,8 @@ html, body {
   .contact-section {
     flex-direction: column !important;
     gap: 1.5rem;
-    margin-top: 4rem;
-    margin-bottom: 2rem;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
     align-items: center;
   }
   .contact-image {
