@@ -41,47 +41,58 @@
       <div class="pf-sidebar-backdrop"></div>
     </div>
   </header>
-    <main>
-      <div id="photo-grid"></div>
-      <style>
-        #photo-grid {
-          display: flex;
-          flex-direction: column;
-          gap: 24px;
-          margin-top: 0;
-        }
-        .photo-row {
-          display: flex;
-          flex-direction: row;
-          gap: 16px;
-          list-style: none;
-          padding: 0;
-          margin: 0;
-          width: 100%;
-          justify-content: space-between;
-          align-items: stretch;
-        }
-        .photo-row img {
-          height: 220px;
-          width: auto;
-          max-width: 100%;
-          border-radius: 8px;
-          box-shadow: 0 2px 8px rgba(0,0,0,0.12);
-          object-fit: contain;
-          transition: transform 0.2s;
-        }
-        .photo-row img:hover {
-          transform: scale(1.04);
-        }
-      </style>
-      <script>
-        // Responsive justified photo grid
-        const BREAKPOINTS = [
-          { min: 1200, height: 320 },
-          { min: 800, height: 220 },
-          { min: 0, height: 160 }
-        ];
-        const GUTTER = 16;
+    <div class="container">
+      <main>
+        <div id="photo-grid"></div>
+        <style>
+          #photo-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+            margin-top: 0;
+          }
+          @media (max-width: 900px) {
+            #photo-grid {
+              margin-top: 10rem !important;
+            }
+          }
+          @media (max-width: 800px) {
+            #photo-grid {
+              margin-top: 8rem !important;
+            }
+          }
+          .photo-row {
+            display: flex;
+            flex-direction: row;
+            gap: 16px;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            width: 100%;
+            justify-content: space-between;
+            align-items: stretch;
+          }
+          .photo-row img {
+            height: 220px;
+            width: auto;
+            max-width: 100%;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+            object-fit: contain;
+            transition: transform 0.2s;
+          }
+          .photo-row img:hover {
+            transform: scale(1.04);
+          }
+        </style>
+        <script>
+          // Responsive justified photo grid
+          const BREAKPOINTS = [
+            { min: 1200, height: 320 },
+            { min: 800, height: 220 },
+            { min: 0, height: 160 }
+          ];
+          const GUTTER = 16;
 
         function getTargetRowHeight() {
           const w = window.innerWidth;
@@ -265,10 +276,11 @@
           updateGrid();
         });
       </script>
-    </main>
-  <footer id="site-footer"></footer>
-</body>
-</html>
+      </main>
+    </div>
+    <footer id="site-footer"></footer>
+  </body>
+  </html>
 <script>
   const hamburger = document.querySelector('.pf-header__hamburger');
   const sidebar = document.querySelector('.pf-sidebar');
