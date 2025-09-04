@@ -419,19 +419,22 @@ html, body {
     margin-bottom: 2rem;
     align-items: center;
   }
+  .contact-image {
+    order: 1;
+    width: 100%;
+  }
+  .contact-form {
+    order: 2;
+    width: 100%;
+    padding: 1rem 0.5rem;
+    max-width: 100%;
+    box-sizing: border-box;
+  }
   .contact-image img {
     max-width: 100%;
     width: 100%;
     margin-bottom: 1rem;
     display: block;
-    order: 1;
-  }
-  .contact-form {
-    width: 100%;
-    padding: 1rem 0.5rem;
-    max-width: 100%;
-    box-sizing: border-box;
-    order: 2;
   }
 }
 .contact-image img {
