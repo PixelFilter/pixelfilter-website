@@ -32,7 +32,7 @@ footer, #site-footer {
   .photos-grid {
     grid-template-columns: 1fr !important;
     gap: 10px;
-    margin: 2rem 0 0 0;
+    margin: 0.5rem 0 0 0;
   }
   .photos-grid img {
     min-height: 120px;
@@ -43,7 +43,7 @@ footer, #site-footer {
   .mixes-grid {
     grid-template-columns: 1fr !important;
     gap: 10px;
-    margin: 2rem 0 0 0;
+    margin: 0.5rem 0 0 0;
   }
 }
 
@@ -282,7 +282,7 @@ html, body {
 @media (max-width: 600px) {
   .shows-list {
     gap: 2rem;
-    margin: 1rem 0 0.5rem 0;
+    margin: 0.5rem 0 0.5rem 0;
   }
   .show-title {
     font-size: 1.2rem;
@@ -308,11 +308,22 @@ html, body {
   margin-top: 12rem;
   gap: 32px;
 }
+@media (max-width: 900px) {
+  .container {
+    padding-top: 0 !important;
+  }
+  .container > main > .about-section {
+    margin-top: 5rem !important;
+  }
+  .about-section {
+    margin-top: 5rem !important;
+  }
+}
 @media (max-width: 800px) {
   .about-section {
     flex-direction: column !important;
     gap: 32px !important;
-    margin-top: 3rem !important;
+    margin-top: 0.5rem !important;
     align-items: center;
   }
   .about-section img {
@@ -407,15 +418,17 @@ html, body {
 .contact-section {
   display: flex;
   gap: 5rem;
-  margin-top: 15rem;
+  /* spacing handled by .container main */
+  margin-top: 0;
   margin-bottom: 4rem;
   align-items: flex-start;
 }
-@media (max-width: 600px) {
+@media (max-width: 900px) {
   .contact-section {
     flex-direction: column !important;
+    margin-top: 5rem !important;
     gap: 1.5rem;
-    margin-top: 2rem;
+    margin-top: 0.5rem;
     margin-bottom: 1rem;
     align-items: center;
   }
@@ -659,7 +672,12 @@ body, html {
 }
 /* Move shows content lower */
 .container main {
-  margin-top: 40px;
+  margin-top: 12rem;
+}
+@media (max-width: 800px) {
+  .container main {
+    margin-top: 0.5rem;
+  }
 }
 /* Move shows content lower */
 .shows-list {
