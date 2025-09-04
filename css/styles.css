@@ -307,6 +307,9 @@ html, body {
 .about-section {
   margin-top: 12rem;
   gap: 32px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 }
 @media (max-width: 900px) {
   .container {
@@ -317,6 +320,7 @@ html, body {
   }
   .about-section {
     margin-top: 5rem !important;
+    align-items: center !important;
   }
 @media (max-width: 900px) {
   .container > main > .contact-section {
