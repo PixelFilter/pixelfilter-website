@@ -672,7 +672,7 @@ body, html {
 }
 /* Move shows content lower */
 .container main {
-  margin-top: 12rem;
+  margin-top: 6rem;
 }
 @media (max-width: 800px) {
   .container main {
