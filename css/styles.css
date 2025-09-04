@@ -30,13 +30,20 @@ footer, #site-footer {
 
 @media (max-width: 600px) {
   .photos-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr !important;
     gap: 10px;
     margin: 4rem 0 0 0;
   }
   .photos-grid img {
     min-height: 120px;
     height: 120px;
+  }
+}
+@media (max-width: 600px) {
+  .mixes-grid {
+    grid-template-columns: 1fr !important;
+    gap: 10px;
+    margin: 4rem 0 0 0;
   }
 }
 
@@ -121,7 +128,7 @@ html, body {
 }
 @media (max-width: 600px) {
   .videos-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr !important;
     row-gap: 2rem;
     column-gap: 0;
     padding-left: 1rem;
@@ -260,9 +267,16 @@ html, body {
     min-width: 100%;
     max-width: 100%;
     border-radius: 0;
+    margin-bottom: 1.5rem;
+    display: flex;
+    justify-content: center;
   }
   .show-content {
     padding: 1.2rem;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
   }
 }
 @media (max-width: 600px) {
@@ -299,16 +313,21 @@ html, body {
     flex-direction: column !important;
     gap: 32px !important;
     margin-top: 9rem !important;
+    align-items: center;
   }
   .about-section img {
     max-width: 100%;
     width: 100%;
     height: auto;
     margin-bottom: 1.5rem;
+    display: block;
+    order: 1;
   }
   .about-text {
     font-size: 1.1rem;
     line-height: 1.6;
+    width: 100%;
+    order: 2;
   }
 }
 /* Footer styles */
@@ -398,17 +417,21 @@ html, body {
     gap: 1.5rem;
     margin-top: 2rem;
     margin-bottom: 2rem;
+    align-items: center;
   }
   .contact-image img {
     max-width: 100%;
     width: 100%;
     margin-bottom: 1rem;
+    display: block;
+    order: 1;
   }
   .contact-form {
     width: 100%;
     padding: 1rem 0.5rem;
     max-width: 100%;
     box-sizing: border-box;
+    order: 2;
   }
 }
 .contact-image img {
