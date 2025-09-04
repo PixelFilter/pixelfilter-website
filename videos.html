@@ -12,6 +12,11 @@
 <body>
   <header class="pf-header">
     <div class="container">
+      <button class="pf-header__hamburger" aria-label="Open menu" type="button">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
       <div class="pf-header__logo">
         <a href="/"><img src="assets/images/PixelFilter_Logo.webp" alt="PixelFilter Logo" height="40"></a>
       </div>
@@ -23,6 +28,17 @@
         <a href="about.html">About</a>
         <a href="contact.html">Contact</a>
       </nav>
+      <aside class="pf-sidebar" aria-hidden="true">
+        <nav class="pf-sidebar__nav">
+          <a href="videos.html" class="active">Videos</a>
+          <a href="mixes.html">Mixes</a>
+          <a href="photos.html">Photos</a>
+          <a href="shows.html">Shows</a>
+          <a href="about.html">About</a>
+          <a href="contact.html">Contact</a>
+        </nav>
+      </aside>
+      <div class="pf-sidebar-backdrop"></div>
     </div>
   </header>
   <div id="video-bg-section">
@@ -354,5 +370,37 @@ window.addEventListener('resize', resizeVideoBgIframe);
 window.addEventListener('DOMContentLoaded', resizeVideoBgIframe);
 </script>
 </html>
+<script>
+  const hamburger = document.querySelector('.pf-header__hamburger');
+  const sidebar = document.querySelector('.pf-sidebar');
+  const sidebarLinks = document.querySelectorAll('.pf-sidebar__nav a');
+  const backdrop = document.querySelector('.pf-sidebar-backdrop');
+
+  function openSidebar() {
+    sidebar.classList.add('pf-sidebar--open');
+    backdrop.classList.add('pf-sidebar-backdrop--open');
+    sidebar.setAttribute('aria-hidden', 'false');
+    document.body.classList.add('sidebar-open');
+  }
+
+  function closeSidebar() {
+    sidebar.classList.remove('pf-sidebar--open');
+    backdrop.classList.remove('pf-sidebar-backdrop--open');
+    sidebar.setAttribute('aria-hidden', 'true');
+    document.body.classList.remove('sidebar-open');
+  }
+
+  hamburger.addEventListener('click', openSidebar);
+
+  backdrop.addEventListener('click', closeSidebar);
+
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') closeSidebar();
+  });
+
+  sidebarLinks.forEach(link => {
+    link.addEventListener('click', closeSidebar);
+  });
+</script>
 <script src="js/header-scroll.js"></script>
 <script src="js/footer.js"></script>
