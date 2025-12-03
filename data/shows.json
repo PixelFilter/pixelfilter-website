@@ -1,5 +1,22 @@
 [
   {
+    "PosterURL": "assets/images/Posters/Boat Party_2025-08-23.webp.webp",
+    "Date": "2025-08-23",
+    "Title": "Boat Party | 90's Inspired Set",
+    "Location": "Vancouver, Canada",
+    "Description": "A 90's era inspired boat party set.",
+    "Stage Name": [
+      {
+        "name": "",
+        "Lineup": [
+          "03:00 pm - 04:00 pm PIXELFILTER b2b ĀMAN"
+        ]
+      }
+    ],
+    "ButtonURL": "https://www.youtube.com/watch?v=Kiz5T9WAv1g",
+    "ButtonLabel": "View Video"
+  },
+  {
     "PosterURL": "assets/images/Posters/Electric Love Festival_2025-08-08.webp",
     "Date": "2025-08-08",
     "Title": "Electric Love Festival | Zen Den Stage",
@@ -13,7 +30,7 @@
           "06:00 pm - 08:00 pm IGNASI",
           "08:00 pm - 09:00 pm ARIA",
           "09:00 pm - 10:00 pm PIXELFILTER",
-          "10:00 pm - 11:00 pm AMAN",
+          "10:00 pm - 11:00 pm ĀMAN",
           "11:00 pm - 12:00 am CRIVELI",
           "12:00 am - 01:00 am DOWNSHIFT",
           "01:00 am - 02:00 am L.A.W.",
@@ -101,7 +118,7 @@
           "08:00 pm - 09:20 pm KHIRON B2B ZAK 4E",
           "09:20 pm - 10:40 pm ATTICAN B2B DAVID ARDILA",
           "10:40 pm - 11:55 pm LILI ALESSA B2B T3CH NOIR",
-          "12:00 am - 01:30 am AMAN B2B PIXELFILTER"
+          "12:00 am - 01:30 am ĀMAN B2B PIXELFILTER"
         ]
       },
       {
@@ -226,7 +243,7 @@
       {
         "name": "",
         "Lineup": [
-          "08:30 pm - 10:00 pm AMAN",
+          "08:30 pm - 10:00 pm ĀMAN",
           "10:00 pm - 11:30 pm PIXELFILTER"
         ]
       }
@@ -263,7 +280,7 @@
       {
         "name": "",
         "Lineup": [
-          "04:00 pm - 05:15 pm AMAN",
+          "04:00 pm - 05:15 pm ĀMAN",
           "05:15 pm - 06:30 pm CRISTIAN FONSECA",
           "06:30 pm - 07:45 am MATTEMUS",
           "07:45 pm - 09:00 pm SHADES OF DAY",
