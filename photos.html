@@ -262,16 +262,29 @@
           };
         }
 
+        let shuffledPhotoFiles = null;
+        let photoImages = null;
+        
         function updateGrid() {
+          if (photoImages) {
+            const grid = document.getElementById('photo-grid');
+            const containerWidth = grid.offsetWidth || grid.clientWidth || window.innerWidth;
+            const targetRowHeight = getTargetRowHeight();
+            const rows = computeRows(photoImages, containerWidth, targetRowHeight);
+            renderGrid(rows, grid);
+            return;
+          }
           fetch('data/photos.json')
             .then(response => response.json())
             .then(photoFiles => {
-              shuffle(photoFiles);
-              getImageMeta(photoFiles).then(images => {
+              shuffledPhotoFiles = [...photoFiles];
+              shuffle(shuffledPhotoFiles);
+              getImageMeta(shuffledPhotoFiles).then(images => {
+                photoImages = images;
                 const grid = document.getElementById('photo-grid');
                 const containerWidth = grid.offsetWidth || grid.clientWidth || window.innerWidth;
                 const targetRowHeight = getTargetRowHeight();
-                const rows = computeRows(images, containerWidth, targetRowHeight);
+                const rows = computeRows(photoImages, containerWidth, targetRowHeight);
                 renderGrid(rows, grid);
               });
             })
