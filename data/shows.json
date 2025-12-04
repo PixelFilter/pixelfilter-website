@@ -1,5 +1,33 @@
 [
   {
+    "PosterURL": "Monkey Loft_2025-08-29.webp",
+    "Date": "2025-08-29",
+    "Title": "Monkey Loft - Driving Closing Set",
+    "Location": "Seattle, USA",
+    "Description": "4am driving energy at the loft.",
+    "Stage Name":  [
+      {
+        "name": "LOFT",
+        "Lineup": [
+          "10:00 pm - 11:30 pm COLT B2B JONO",
+          "11:30 pm - 01:00 am T3CH NOIR",
+          "01:00 am - 02:30 am BAD GINGER",
+          "02:30 am - 04:00 am CANCELTHECOUCH B2B PIXELFILTER"
+        ]
+      },
+      {
+        "name": "DECK",
+        "Lineup": [
+          "11:00 pm - 01:00 am SINCA",
+          "01:00 am - 02:30 am CITRUS AGE",
+          "02:30 am - 04:00 am CHRIS WILDR B2B JOHNNY MONSOON"
+        ]
+      }
+    ],
+    "ButtonURL": "https://youtu.be/KAztJfO5Hk4",
+    "ButtonLabel": "View Video"
+  },
+  {
     "PosterURL": "assets/images/Posters/Boat Party_2025-08-23.webp",
     "Date": "2025-08-23",
     "Title": "Boat Party | 90s Inspired Set",
