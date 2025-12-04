@@ -294,10 +294,16 @@
         }
 
         let resizeTimeout;
+        let lastGridWidth = null;
         window.addEventListener('resize', () => {
           clearTimeout(resizeTimeout);
           resizeTimeout = setTimeout(() => {
-            updateGrid();
+            const grid = document.getElementById('photo-grid');
+            const currentWidth = grid.offsetWidth || grid.clientWidth || window.innerWidth;
+            if (lastGridWidth !== currentWidth) {
+              lastGridWidth = currentWidth;
+              updateGrid();
+            }
           }, 200);
         });
 
