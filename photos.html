@@ -280,8 +280,12 @@
             });
         }
 
+        let resizeTimeout;
         window.addEventListener('resize', () => {
-          updateGrid();
+          clearTimeout(resizeTimeout);
+          resizeTimeout = setTimeout(() => {
+            updateGrid();
+          }, 200);
         });
 
         document.addEventListener('DOMContentLoaded', () => {
