@@ -4,11 +4,11 @@ document.addEventListener('DOMContentLoaded', async () => {
   const shows = await response.json();
 
   function formatDate(dateStr) {
-    const date = new Date(dateStr);
-    const month = date.toLocaleString('en-US', { month: 'short' }).toUpperCase();
-    const day = date.getDate();
+    const [year, month, day] = dateStr.split('-').map(Number);
+    const date = new Date(year, month - 1, day);
+    const monthName = date.toLocaleString('en-US', { month: 'short' }).toUpperCase();
     return `
-      <div class="show-date-month">${month}</div>
+      <div class="show-date-month">${monthName}</div>
       <div class="show-date-day">${day}</div>
     `;
   }
