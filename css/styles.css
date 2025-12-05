@@ -118,6 +118,14 @@ html, body {
   text-align: left;
   font-weight: 700;
 }
+.video-title-secondary {
+  display: block;
+  color: #bbb;
+  font-size: 1.05rem;
+  font-weight: 500;
+  margin-top: 0.1em;
+  letter-spacing: 0.01em;
+}
 .video-desc {
   font-family: 'Inter', Arial, Helvetica, sans-serif;
   font-size: 0.9rem;

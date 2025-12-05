@@ -93,7 +93,11 @@
               <div class="video-item" data-video-id="${id}" data-title="${video.Title}" style="cursor:pointer;">
                 <img src="${thumb}" alt="Thumbnail for ${video.Title}" class="video-thumb"/>
                 <div class="video-info">
-                  <h2 class="video-title">${video.Title}</h2>
+                  <h2 class="video-title">${
+                    video.Title.includes(' | ')
+                      ? video.Title.split(' | ')[0] + '<br><span class="video-title-secondary">' + video.Title.split(' | ')[1] + '</span>'
+                      : video.Title
+                  }</h2>
                   <p class="video-desc">${video.Description}</p>
                 </div>
               </div>
@@ -226,7 +230,11 @@
                       <div class="video-item" data-video-id="${id}" data-title="${video.Title}" style="cursor:pointer;">
                         <img src="${thumb}" alt="Thumbnail for ${video.Title}" class="video-thumb"/>
                         <div class="video-info">
-                          <h2 class="video-title">${video.Title}</h2>
+                          <h2 class="video-title">${
+                            video.Title.includes(' | ')
+                              ? video.Title.split(' | ')[0] + '<br><span class="video-title-secondary">' + video.Title.split(' | ')[1] + '</span>'
+                              : video.Title
+                          }</h2>
                           <p class="video-desc">${video.Description}</p>
                         </div>
                       </div>
