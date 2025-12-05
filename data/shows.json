@@ -1,5 +1,35 @@
 [
   {
+    "PosterURL": "assets/images/Posters/Amplitude Festival_2025-09-14.webp",
+    "Date": "2025-09-14",
+    "Title": "Amplitude Festival | Late Night Hardgroove",
+    "Location": "The Gorge, USA",
+    "Description": "Late night hardroove set under the stars at the Gorge.",
+    "Stage Name":  [
+      {
+        "name": "",
+        "Lineup": [
+          "02:00 pm - 03:00 pm JHARKA",
+          "03:00 pm - 04:00 pm FICK",
+          "04:00 pm - 05:00 pm JACKI WHY",
+          "05:00 pm - 06:00 pm PATATTAK",
+          "06:00 pm - 07:00 pm KHIRON",
+          "07:00 pm - 08:00 pm AARON GROSSBARD",
+          "08:00 pm - 09:00 pm BGEEZY",
+          "09:00 pm - 10:00 pm FARIN",
+          "10:00 pm - 11:00 pm ANTIN HALE",
+          "11:00 pm - 12:00 am BLK LAB",
+          "12:00 am - 01:00 am TRIPOLAR",
+          "01:00 am - 02:00 am LITHEON",
+          "02:00 am - 03:00 am PIXELFILTER",
+          "03:00 am - 04:00 am GHOSTMAFIA"
+        ]
+      }
+    ],
+    "ButtonURL": "https://www.youtube.com/watch?v=KAztJfO5Hk4",
+    "ButtonLabel": "View Video"
+  },
+  {
     "PosterURL": "assets/images/Posters/Monkey Loft_2025-08-29.webp",
     "Date": "2025-08-29",
     "Title": "Monkey Loft - Driving Closing Set",
